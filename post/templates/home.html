@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Заметки</title>
+	<style "type/css">
+		div.page-container {
+			max-width: 100%;
+			min-width: 960px;
+			margin: 0 auto;
+			padding: 0;
+			}
+
+		div.page-container-inner {
+			min-width: 960px;
+			max-width: 1600px;
+			margin: 0 auto;
+			padding: 0; 
+			width: 230px; 
+			font-size: 1em;
+			word-wrap: break-word;
+			}
+
+	</style>
+
+</head>
+
+<body style="background-color: #FFDEAD">
+
+	<div align = "center"><button type ="submit"><a href="/add" style ="color: #000000; text-decoration: none" >Добавить новое дело</a></button></div>
+	<div class ="page-container" >
+	<div class ="page-container-inner" style="background-color: #FFF8DC">
+    <h1 align ="center"><font face = "Comic Sans Ms">Дела</font></h1>
+
+    {% for thing in things %}
+
+        <p><li>{{ thing.text }}<div align="right"><a href="up/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Изменить</a></div><div align="right"><a href="del/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Удалить</a></div></li></p>
+
+    {% endfor %}
+
+	<footer class="pagination" align = "center">
+		<span class="step-links">
+			{% if things.has_previous %}
+				<button type = "submit"><a href="?page={{ things.previous_page_number }}" style ="color: #000000; text-decoration: none">previous</a></button>
+			{% endif %}
+
+			<span class="current">
+				Page {{ things.number }} of {{ things.paginator.num_pages }}.
+			</span>
+
+			{% if things.has_next %}
+				<button type = "submit"><a href="?page={{ things.next_page_number }}" style ="color: #000000; text-decoration: none">next</a></button>
+			{% endif %}
+		</span>
+	</div>
+	</div>
+	</footer>
+</body>
+</html>
