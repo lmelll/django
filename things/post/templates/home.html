@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Заметки</title>
+    <title>Cases</title>
 	<style "type/css">
 		div.page-container {
 			max-width: 100%;
@@ -30,21 +30,20 @@
 </head>
 
 <body style="background-color: #FFDEAD">
-
-	<div align = "center"><button type ="submit"><a href="/add" style ="color: #000000; text-decoration: none" >Добавить новое дело</a></button></div>
+	<div align = "left"><button type ="submit"><a href="/login" style ="color: #000000; text-decoration: none" >SighIn</a></button></div>
+	<div align = "left"><button type ="submit"><a href="/signup" style ="color: #000000; text-decoration: none" >SignUp</a></button></div>
+	<div align = "center"><button type ="submit"><a href="/add" style ="color: #000000; text-decoration: none" >Add new case</a></button></div>
 	<div class ="page-container" >
 	<div class ="page-container-inner" style="background-color: #FFF8DC">
-    <h1 align ="center"><font face = "Comic Sans Ms">Дела</font></h1>
+    <h1 align ="center"><font face = "Comic Sans Ms">Cases</font></h1>
 
     {% for thing in things %}
-
-        <p><li>{{ thing.text }}<div align="right"><a href="up/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Изменить</a></div><div align="right"><a href="del/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Удалить</a></div></li></p>
-
+			<p><li>{{ thing.text }}{{thing.author}}{{author}}{{text}}<div align="right"><a href="up/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Edit</a></div><div align="right"><a href="del/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Delete</a></div></li></p>
     {% endfor %}
 
-	<footer class="pagination" align = "center">
+		<footer class="pagination" align = "center">
 		<span class="step-links">
-			{% if things.has_previous %}
+			{% if things.has_previous  %}
 				<button type = "submit"><a href="?page={{ things.previous_page_number }}" style ="color: #000000; text-decoration: none">previous</a></button>
 			{% endif %}
 
@@ -56,8 +55,10 @@
 				<button type = "submit"><a href="?page={{ things.next_page_number }}" style ="color: #000000; text-decoration: none">next</a></button>
 			{% endif %}
 		</span>
-	</div>
-	</div>
-	</footer>
+		</div>
+		</div>
+		</footer>
+
+	<div>User: {{ user}}</div>
 </body>
 </html>

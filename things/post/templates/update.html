@@ -6,19 +6,20 @@
 
     <meta charset="UTF-8">
 
-    <title>Изменить дело</title>
+    <title>Edit</title>
 
 </head>
 <body class = "container" style="background-color: #FFDEAD">
 	<fieldset>
 	<form method="post" > 
-	<p>Редактировать<Br>
+	<p>Edit<Br>
 	<textarea  name ="text">{{ thing.text }}</textarea></p>
 	{% csrf_token %}
 	{{ form.as_p }}
 
-	<button type="submit">Изменить</button>
+	<button type="submit">Accept</button>
 	</form>
+	<div>User: {{ user}}</div>
 	</fieldset>
 </body>
 </html>

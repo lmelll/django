@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Login</title>
+
+</head>
+
+<body style="background-color: #FFDEAD">
+
+    <form method="post" action="/login/">
+
+        <fieldset>
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+        </fieldset>
+
+        <button type="submit">SignIn</button>
+
+    </form>
+
+    <div>User: {{ user }}</div>
+
+
+    <div><a href="/">Return to main page</a></div>
+
+</body>
+
+</html>
