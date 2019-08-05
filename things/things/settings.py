@@ -76,9 +76,8 @@ WSGI_APPLICATION = 'things.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-	'USER': 'user_name',
-	'PASSWORD': 'password',
+        'NAME': 'root',
+	'USER': 'root',
     }
 }
 
