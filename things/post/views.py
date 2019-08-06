@@ -11,6 +11,8 @@ from post.forms import ThingForm, SignupForm, LoginForm
 
 from django.contrib.auth import login, authenticate
 
+from django.contrib.auth.models import User, AnonymousUser
+
 
 
 def thing(request):
@@ -47,8 +49,10 @@ def update(request, num):
 	
 	
 def home(request):
-	return render(request, 'home.html', {'author': request.user, 'things': paginate(request, Thing.objects.posts().filter(author = request.user)), 'user': request.user, 'session':request.session,})
-
+	if request.user.is_authenticated:
+		return render(request, 'home.html', {'author': request.user, 'things': paginate(request, Thing.objects.posts().filter(author = request.user)), 'user': request.user, 'session':request.session,})
+	else:
+		return HttpResponseRedirect('/login')
 def paginate(request, qs):
 	try:
 		limit = int(request.GET.get('limit', 10))
