@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 'post',
+    'django.contrib.staticfiles',
+    'post',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,11 @@ WSGI_APPLICATION = 'things.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'root',
-	'USER': 'root',
+        'NAME': 'django_db',
+	'USER': 'user_name',
+	'PASSWORD': 'password',
+	'HOST': 'localhost',
+	'PORT': '5432'
     }
 }
 

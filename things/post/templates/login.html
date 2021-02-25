@@ -5,32 +5,58 @@
 <head>
 
     <meta charset="UTF-8">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
     <title>Login</title>
+	<style "type/css">
+        .btn {
+            font-weight: 400;
+            text-decoration: none;
+            color: #9400D3; 
+            background: #F4EEE4;
+            font-size: 14px;
+            border: 1px solid #B22222;
+            padding: 3px 10px;
+            transition: all 0.5s ease;
+            text-align: center;
+            width: 70px;
+            border-radius: 10px;
+            }
+
+        .btn:hover {
+            background: #B22222;
+            color: #F4EEE4;
+            }
+	   body,html {
+        font-family: 'Open Sans', sans-serif;
+        height: 1px;
+        font-weight: 800;
+        color: #F4EEE4;
+        background: linear-gradient(to top left, #B22222, #9400D3);
+		}
+        fieldset {
+            margin-bottom: 20px;
+            border: none;
+        }
+	</style>
 
 </head>
 
 <body style="background-color: #FFDEAD">
+    <div style="display: flex">
+        <form method="post" action="/login/">
+            <fieldset >
 
-    <form method="post" action="/login/">
+                {% csrf_token %}
 
-        <fieldset>
+                {{ form.as_p }}
 
-{% csrf_token %}
+            </fieldset>
 
-{{ form.as_p }}
-
-        </fieldset>
-
-        <button type="submit">SignIn</button>
-
-    </form>
-
-    <div>If already registered</div><button type ="submit"><a href="/signup" style ="color: #000000; text-decoration: none" >SignUp</a></button>
-
-
-    <div><a href="/">Return to main page</a></div>
-
+            <button type="submit" class="btn" style="margin-right: 20px">SignIn</button><button type="submit" class="btn"><a href="/signup" style="text-decoration: none;">SignUp</a></button>
+        </form>
+    </div>
+    <div style="margin-top: 20px"><a href="/" class="btn">Return to main page</a></div>
 </body>
 
 </html>

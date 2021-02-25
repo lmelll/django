@@ -5,60 +5,121 @@
 <head>
 
     <meta charset="UTF-8">
-
+ 	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
     <title>Cases</title>
 	<style "type/css">
 		div.page-container {
-			max-width: 100%;
-			min-width: 960px;
-			margin: 0 auto;
-			padding: 0;
-			}
-
-		div.page-container-inner {
-			min-width: 960px;
-			max-width: 1600px;
+			max-width: 500px;
+			width: 500px;
 			margin: 0 auto;
 			padding: 0; 
-			width: 230px; 
-			font-size: 1em;
 			word-wrap: break-word;
 			}
+		.btn {
+			text-decoration: none;
+			color: #9400D3; 
+			background: #F4EEE4;
+			font-size: 14px;
+			border: 1px solid #B22222;
+			padding: 5px 10px;
+			transition: all 0.5s ease;
+			text-align: center;
+			width: 70px;
+			border-radius: 10px;
+			}
 
+		.btn:hover {
+			background: #B22222;
+			color: #F4EEE4;
+			}
+
+		.delete {
+			color: #9400D3; 
+			text-decoration: none; 	
+
+			padding: 2px 2px; 
+			transition: all 0.5s ease;
+		}
+		.delete:hover {
+			background: #B22222;
+			color: white;
+			}
+		.update {
+			margin-left: auto;
+			color: #9400D3; 
+			text-decoration: none; 
+			padding: 2px 2px; 
+			transition: all 0.5s ease;
+		}
+		.update:hover {
+			background: #B22222;
+			color: white;
+			}
+		.shadowtext {
+			text-shadow: 1px 1px 2px black; 
+			color: white; 
+			font-size: 2em;
+			}
+		body,html {
+			font-family: 'Open Sans', sans-serif;
+			height: 1px;
+			background: linear-gradient(to top left, #B22222, #9400D3);
+			}
+		.shadow {
+			background: white;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+			}
+		hr {
+			color: #DA70D6;
+			background-color: #DA70D6;
+			height: 1px;
+			}
+		fieldset {
+			border:0 none
+			}
+	
+			
+		
+			
 	</style>
+
 
 </head>
 
-<body style="background-color: #FFDEAD">
-	<div align = "left"><button type ="submit"><a href="/login" style ="color: #000000; text-decoration: none" >SighIn</a></button></div>
-	<div align = "left"><button type ="submit"><a href="/signup" style ="color: #000000; text-decoration: none" >SignUp</a></button></div>
-	<div align = "center"><button type ="submit"><a href="/add" style ="color: #000000; text-decoration: none" >Add new case</a></button></div>
+<body>
+	<div align = "left"><a href="/login" class="btn" style="display: block">SighIn</a></div>
+		<div style="text-shadow: 1px 1px 2px black; color: white; margin-top: 5px"><font face = "Comic Sans Ms">User: {{ user}}</font></div>
+	    <h1 class ="shadowtext" align ="center"><font face = "Comic Sans Ms">Cases</font></h1>
+		<form method="post" action="/add/" align = "center"> 
+			<input type="text" name="text" required="required" />
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type ="submit" class="btn" style="width: 120px">Add new case</button>
+		</form>
 	<div class ="page-container" >
-	<div class ="page-container-inner" style="background-color: #FFF8DC">
-    <h1 align ="center"><font face = "Comic Sans Ms">Cases</font></h1>
-
-    {% for thing in things %}
-			<p><li>{{ thing.text }}{{thing.author}}{{author}}{{text}}<div align="right"><a href="up/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Edit</a></div><div align="right"><a href="del/{{ thing.id }}" style ="color: #696969; text-decoration: none" >Delete</a></div></li></p>
-    {% endfor %}
-
-		<footer class="pagination" align = "center">
-		<span class="step-links">
+		<fieldset class ="shadow" style ="margin-top: 15%; background-color:white;" >
+   	 		{% for thing in things %}
+			<div style="display: flex; align-items: center;"><p  style="max-width: 500px"><a href="del/{{ thing.id }}" class="delete">X</a><span style="margin-left: 10px">{{thing.text}}</span></p><a href="up/{{ thing.id }}" class="update">Edit</a></div><hr>
+    		{% endfor %}
+		</fieldset>
+		<footer class="pagination" align = "center" style ="margin-top: 5%">
+		<div class="step-links" style="display: flex; align-items: center; margin-left: 180px" >
 			{% if things.has_previous  %}
-				<button type = "submit"><a href="?page={{ things.previous_page_number }}" style ="color: #000000; text-decoration: none">previous</a></button>
+				<a href="?page={{ things.previous_page_number }}" class="btn" style="margin-left: -90px">previous</a>
 			{% endif %}
 
-			<span class="current">
+			<span class="current" style="text-shadow: 1px 1px 2px black; color: white; margin-right: 20px; margin-left: 20px" ><font face = "Comic Sans Ms">
 				Page {{ things.number }} of {{ things.paginator.num_pages }}.
+			</font>
 			</span>
 
 			{% if things.has_next %}
-				<button type = "submit"><a href="?page={{ things.next_page_number }}" style ="color: #000000; text-decoration: none">next</a></button>
+				<a href="?page={{ things.next_page_number }}" class="btn">next</a>
 			{% endif %}
-		</span>
-		</div>
 		</div>
 		</footer>
+	</div>
 
-	<div>User: {{ user}}</div>
 </body>
 </html>

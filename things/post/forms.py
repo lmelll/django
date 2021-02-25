@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 
 class ThingForm(forms.Form):
-	text =forms.CharField(label = 'Add new case', widget=forms.Textarea(attrs={'rows':35, 'cols':185,}))
+	text =forms.CharField(label = 'Add new case', widget=forms.TextInput())
 	def clean(self):
 			pass
 	def save(self, *args, **kwargs):

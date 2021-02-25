@@ -1,0 +1,27 @@
+body,html {
+height: 200px;
+background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+}
+
+div.page-container {
+	max-width: 100%;
+	min-width: 960px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+div.page-container-inner {
+	min-width: 960px;
+	max-width: 1600px;
+	margin: 0 auto;
+	padding: 0; 
+	width: 230px; 
+	font-size: 1em;
+	word-wrap: break-word;
+	}
+
+.shadowtext {
+	text-shadow: 1px 1px 2px black; 
+	color: white; 
+	font-size: 2em;
+	}

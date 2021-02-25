@@ -24,7 +24,7 @@ def thing(request):
 			return HttpResponseRedirect('/')
 	else:
 		form = ThingForm()
-	return render(request, 'post.html', {'form': form, 'user': request.user, 'session':request.session,})
+	return render(request, 'home.html', {'form': form, 'user': request.user, 'session':request.session,})
 	
 def delete(request, num):
 	things = Thing(id=num)
@@ -55,11 +55,11 @@ def home(request):
 		return HttpResponseRedirect('/login')
 def paginate(request, qs):
 	try:
-		limit = int(request.GET.get('limit', 10))
+		limit = int(request.GET.get('limit', 5))
 	except ValueError:
-		limit = 10
-	if limit > 10:
-		limit = 10
+		limit = 5
+	if limit > 5:
+		limit = 5
 	try:
 		page = int(request.GET.get('page',1))
 	except ValueError:

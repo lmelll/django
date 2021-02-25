@@ -9,6 +9,7 @@ class ThingManager(models.Manager):
 class Thing(models.Model):
 	text = models.TextField(default=" ")
 	author = models.ForeignKey(User, null=True, on_delete = models.SET_NULL)
+	public = models.BooleanField(default=False)
 	objects = ThingManager()
 	
 	def __str__(self):

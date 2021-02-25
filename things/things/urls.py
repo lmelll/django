@@ -18,5 +18,11 @@ from django.urls import path
 from post import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls), path('', views.home), path('add/', views.thing), path('del/<int:num>/', views.delete), path('up/<int:num>/', views.update), path('login/', views.login_view ), path('signup/', views.signup ),
+    	path('admin/', admin.site.urls), 
+	path('', views.home), 
+	path('add/', views.thing), 
+	path('del/<int:num>/', views.delete), 
+	path('up/<int:num>/', views.update), 
+	path('login/', views.login_view ), 
+	path('signup/', views.signup ),
 ]

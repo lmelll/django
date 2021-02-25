@@ -5,8 +5,40 @@
 <head>
 
     <meta charset="UTF-8">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
     <title>Edit</title>
+	<style "type/css">
+        .btn {
+            font-weight: 400;
+            text-decoration: none;
+            color: #9400D3; 
+            background: #F4EEE4;
+            font-size: 14px;
+            border: 1px solid #B22222;
+            padding: 3px 10px;
+            transition: all 0.5s ease;
+            text-align: center;
+            width: 70px;
+            border-radius: 10px;
+            }
+
+        .btn:hover {
+            background: #B22222;
+            color: #F4EEE4;
+            }
+	    body,html {
+            font-family: 'Open Sans', sans-serif;
+            height: 1px;
+            font-weight: 800;
+            color: #F4EEE4;
+            background: linear-gradient(to top left, #B22222, #9400D3);
+		  }
+        fieldset {
+            margin-bottom: 20px;
+            border: none;
+        }
+	</style>
 
 </head>
 <body class = "container" style="background-color: #FFDEAD">
@@ -17,7 +49,7 @@
 	{% csrf_token %}
 	{{ form.as_p }}
 
-	<button type="submit">Accept</button>
+	<button type="submit" class="btn">Accept</button>
 	</form>
 	<div>User: {{ user}}</div>
 	</fieldset>
